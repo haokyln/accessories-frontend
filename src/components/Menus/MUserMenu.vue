@@ -8,7 +8,7 @@
     <v-list>
       <v-list-item v-for="(item, index) in items" :key="index">
         <v-list-item-title
-          ><v-btn color="primary" v-bind="attrs" v-on="on">
+          ><v-btn :color="item.color" v-bind="attrs" v-on="on">
             <span>
               {{ item.title }}
             </span>
@@ -21,29 +21,32 @@
 
 <script>
 export default {
-  name: "MUserMenu",
+  name: 'MUserMenu',
   props: {
     icon: {
       type: String,
-      default: "mdi-dots-vertical",
+      default: 'mdi-dots-vertical',
     },
     items: {
       type: Array,
       default: () => [
         {
           index: 1,
-          title: "Profile",
-          action: "",
+          title: 'Profile',
+          action: '',
+          color: 'primary',
         },
         {
           index: 2,
-          title: "Cart",
-          action: "",
+          title: 'Cart',
+          action: '',
+          color: 'primary',
         },
         {
           index: 3,
-          title: "Log out",
-          action: "",
+          title: 'Log out',
+          action: '',
+          color: 'warning',
         },
       ],
     },
