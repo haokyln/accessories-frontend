@@ -1,17 +1,13 @@
 <template>
   <v-app>
-    <HomeView />
+    <router-view />
   </v-app>
 </template>
 
 <script>
-import HomeView from '@/pages/HomeView.vue';
 export default {
   name: 'App',
-
-  components: {
-    HomeView,
-  },
+  components: {},
 
   data: () => ({
     //

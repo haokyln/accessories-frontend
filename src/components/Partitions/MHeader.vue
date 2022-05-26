@@ -35,8 +35,7 @@
       <v-btn icon>
         <v-icon>mdi-account</v-icon>
       </v-btn>
-
-      <m-user-menu></m-user-menu>
+      <m-user-menu v-if="isLogin"></m-user-menu>
     </v-app-bar>
 
     <v-navigation-drawer v-model="drawer" absolute bottom temporary app hide-overlay>
@@ -53,6 +52,7 @@
 </template>
 
 <script>
+import { mapState } from 'vuex';
 import MUserMenu from '../Menus/MUserMenu.vue';
 export default {
   name: 'MHeader',
@@ -70,6 +70,9 @@ export default {
     handleSubmit() {
       console.log('click');
     },
+  },
+  computed: {
+    ...mapState(['isLogin']),
   },
   components: {
     MUserMenu,

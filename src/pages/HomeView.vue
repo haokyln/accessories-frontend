@@ -1,20 +1,21 @@
 <template>
-  <div>
-    <m-header />
-    <v-container class="mt-10">
-      <h1>Hellou</h1>
-      <router-view />
-    </v-container>
-  </div>
+  <m-layout>
+    <h1>HomeView</h1>
+  </m-layout>
 </template>
 
 <script>
 import MLayout from '@/shared/MLayout.vue';
-import MHeader from '@/components/Partitions/MHeader.vue';
+import { mapState } from 'vuex';
 
 export default {
-  layout: MLayout,
-  components: { MHeader },
+  components: { MLayout },
+  data() {
+    return {};
+  },
+  computed: {
+    ...mapState(['isLogin']),
+  },
 };
 </script>
 

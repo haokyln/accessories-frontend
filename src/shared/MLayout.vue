@@ -3,7 +3,7 @@
     <div class="m-layout">
       <m-header />
       <div class="m-layout-container">
-        <v-container>
+        <v-container class="mt-10">
           <v-layout align-center justify-center>
             <slot />
           </v-layout>
