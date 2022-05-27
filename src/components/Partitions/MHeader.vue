@@ -31,11 +31,11 @@
       <v-btn class="ml-2" color="white" @click="hidden = !hidden" icon>
         <v-icon>{{ hidden ? 'mdi-close' : 'mdi-magnify' }}</v-icon>
       </v-btn>
-
-      <v-btn icon>
+      <v-btn color="primary" dark>
         <v-icon>mdi-account</v-icon>
+        <span>{{ username }}</span>
       </v-btn>
-      <m-user-menu v-if="isLogin"></m-user-menu>
+      <m-user-menu></m-user-menu>
     </v-app-bar>
 
     <v-navigation-drawer v-model="drawer" absolute bottom temporary app hide-overlay>
@@ -54,9 +54,13 @@
 <script>
 import { mapState } from 'vuex';
 import MUserMenu from '../Menus/MUserMenu.vue';
+import jwt_decode from 'jwt-decode';
+
 export default {
   name: 'MHeader',
   data: () => ({
+    username: '',
+
     hidden: false,
     drawer: false,
     links: [
@@ -65,6 +69,12 @@ export default {
       { icon: 'mdi-bag-personal', text: 'Bags', route: '/bags' },
     ],
   }),
+  created() {
+    const accessToken = localStorage.getItem('accessToken');
+    var decoded = jwt_decode(accessToken);
+    console.log(decoded.sub);
+    this.username = decoded.sub;
+  },
   props: {},
   methods: {
     handleSubmit() {

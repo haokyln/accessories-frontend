@@ -142,7 +142,8 @@
 </template>
 
 <script>
-import doLogin from '@/services';
+import { doLogin } from '@/services';
+import jwt_decode from 'jwt-decode';
 export default {
   name: 'LogIn',
   data() {
@@ -155,6 +156,11 @@ export default {
       fullname: '',
     };
   },
+  created() {
+    const accessToken = localStorage.getItem('accessToken');
+    var decoded = jwt_decode(accessToken);
+    console.log(decoded);
+  },
   props: {
     source: {
       type: String,
@@ -166,12 +172,10 @@ export default {
       this.$refs.form.reset();
     },
     login() {
-      // this.$refs.formLogin.preve
-      let submit = doLogin('http://localhost:8081/api/v1/login', {
+      doLogin('http://localhost:8081/api/v1/login', {
         username: this.username,
         password: this.password,
       });
-      console.log(submit);
     },
   },
 };

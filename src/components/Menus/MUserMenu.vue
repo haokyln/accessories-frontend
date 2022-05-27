@@ -8,7 +8,7 @@
     <v-list>
       <v-list-item v-for="(item, index) in items" :key="index">
         <v-list-item-title
-          ><v-btn :color="item.color" v-bind="attrs" v-on="on">
+          ><v-btn :color="item.color">
             <span>
               {{ item.title }}
             </span>
