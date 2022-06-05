@@ -143,7 +143,6 @@
 
 <script>
 import { doLogin } from '@/services';
-import jwt_decode from 'jwt-decode';
 export default {
   name: 'LogIn',
   data() {
@@ -155,11 +154,6 @@ export default {
       email: '',
       fullname: '',
     };
-  },
-  created() {
-    const accessToken = localStorage.getItem('accessToken');
-    var decoded = jwt_decode(accessToken);
-    console.log(decoded);
   },
   props: {
     source: {

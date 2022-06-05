@@ -8,7 +8,7 @@
     <v-list>
       <v-list-item v-for="(item, index) in items" :key="index">
         <v-list-item-title
-          ><v-btn :color="item.color">
+          ><v-btn :color="item.color" @click="handleClick(item)">
             <span>
               {{ item.title }}
             </span>
@@ -20,6 +20,7 @@
 </template>
 
 <script>
+import router from '@/router';
 export default {
   name: 'MUserMenu',
   props: {
@@ -33,22 +34,34 @@ export default {
         {
           index: 1,
           title: 'Profile',
-          action: '',
+          action: 'profile',
           color: 'primary',
         },
         {
           index: 2,
           title: 'Cart',
-          action: '',
+          action: 'cart',
           color: 'primary',
         },
         {
           index: 3,
           title: 'Log out',
-          action: '',
+          action: 'log-out',
           color: 'warning',
         },
       ],
+    },
+  },
+  methods: {
+    handleClick(item) {
+      if (item.action === 'log-out') {
+        localStorage.removeItem('accessToken');
+        console.log('log out');
+      }
+      if (item.action === 'profile') {
+        router.push('/profile');
+        console.log('log out');
+      }
     },
   },
 };

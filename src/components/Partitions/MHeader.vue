@@ -20,7 +20,6 @@
             outlined
             dense
             hide-details="auto"
-            clearable
             color="white"
             autocomplete
           >
@@ -31,10 +30,11 @@
       <v-btn class="ml-2" color="white" @click="hidden = !hidden" icon>
         <v-icon>{{ hidden ? 'mdi-close' : 'mdi-magnify' }}</v-icon>
       </v-btn>
-      <v-btn color="primary" dark>
-        <v-icon>mdi-account</v-icon>
-        <span>{{ username }}</span>
+      <v-btn v-if="!username" @click="handleToLogin" color="primary" elevation="5">
+        <v-icon>mdi-login</v-icon>
+        <span class="px-2">Login</span>
       </v-btn>
+      <span v-else> {{ 'Hello ' + username }}</span>
       <m-user-menu></m-user-menu>
     </v-app-bar>
 
@@ -52,9 +52,9 @@
 </template>
 
 <script>
-import { mapState } from 'vuex';
 import MUserMenu from '../Menus/MUserMenu.vue';
 import jwt_decode from 'jwt-decode';
+import router from '@/router';
 
 export default {
   name: 'MHeader',
@@ -71,19 +71,18 @@ export default {
   }),
   created() {
     const accessToken = localStorage.getItem('accessToken');
-    var decoded = jwt_decode(accessToken);
-    console.log(decoded.sub);
-    this.username = decoded.sub;
+    this.username = !accessToken ? null : jwt_decode(accessToken).sub;
   },
   props: {},
   methods: {
     handleSubmit() {
       console.log('click');
     },
+    handleToLogin() {
+      router.push('/login');
+    },
   },
-  computed: {
-    ...mapState(['isLogin']),
-  },
+
   components: {
     MUserMenu,
   },

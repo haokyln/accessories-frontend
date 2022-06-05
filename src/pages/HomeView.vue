@@ -1,24 +1,19 @@
 <template>
-  <m-layout :username="username">
-    <h1>HomeView</h1>
+  <m-layout>
+    <m-slide-banners></m-slide-banners>
   </m-layout>
 </template>
 
 <script>
 import MLayout from '@/shared/MLayout.vue';
-import jwt_decode from 'jwt-decode';
+import MSlideBanners from '@/components/Slide/MSlideBanners.vue';
 
 export default {
-  components: { MLayout },
+  components: { MLayout, MSlideBanners },
   data() {
     return {};
   },
   computed: {},
-  created() {
-    const accessToken = localStorage.getItem('accessToken');
-    var decoded = jwt_decode(accessToken);
-    console.log(decoded.sub);
-  },
 };
 </script>
 

@@ -3,7 +3,7 @@
     <div class="m-layout">
       <m-header />
       <div class="m-layout-container">
-        <v-container class="mt-10">
+        <v-container class="mt-10" fluid>
           <v-layout align-center justify-center>
             <slot />
           </v-layout>

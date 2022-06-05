@@ -33,6 +33,11 @@ const routes: Array<RouteConfig> = [
     name: 'all',
     component: () => import(/* webpackChunkName: "all" */ '@/pages/AllProductView.vue'),
   },
+  {
+    path: '/profile',
+    name: 'profile',
+    component: () => import(/* webpackChunkName: "profile" */ '@/pages/Profile.vue'),
+  },
 ];
 
 const router = new VueRouter({
