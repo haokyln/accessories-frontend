@@ -1,12 +1,5 @@
 <template>
-  <v-text-field
-    v-bind="$attrs"
-    class="nde-text-field"
-    outlined
-    dense
-    hide-details="auto"
-    clearable
-  >
+  <v-text-field v-bind="$attrs" class="nde-text-field" outlined dense hide-details="auto" clearable>
     <template v-slot:prepend>
       <slot name="prepend" />
     </template>
@@ -18,7 +11,10 @@
 </template>
 
 <script>
-export default { name: "MTextField" };
+export default {
+  name: 'MTextField',
+  methods: {},
+};
 </script>
 
 <style></style>

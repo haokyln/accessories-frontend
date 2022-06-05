@@ -6,7 +6,8 @@
 
 <script>
 export default {
-  emits: ["click"],
+  name: 'MButton',
+  emits: ['click'],
 
   props: {},
 };

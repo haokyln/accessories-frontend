@@ -5,7 +5,6 @@
     color="white"
     horizontal
     v-bind="$attrs"
-    v-on="on"
     fixed
   >
     <v-btn>
@@ -30,7 +29,7 @@
 
 <script>
 export default {
-  name: "MFooter",
+  name: 'MFooter',
   props: {},
   data: () => ({ value: 1 }),
 };
